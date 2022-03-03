@@ -18,8 +18,14 @@ Route::get('/Shop',  [HomeController::class, 'shop'])->name('shop');
 Route::get('/About',  [HomeController::class, 'about'])->name('about');
 Route::get('/Blogs',  [HomeController::class, 'blog'])->name('blog');
 Route::get('/Contact',  [HomeController::class, 'contact'])->name('contact');
-
-
+Route::get('/Cart',  [HomeController::class, 'cart'])->name('cart');
+Route::get('/Checkout',  [HomeController::class, 'checkout'])->name('checkout');
+Route::get('/Login',  [HomeController::class, 'login'])->name('login');
+Route::get('/Account',  [HomeController::class, 'account'])->name('account');
+Route::get('/Wishlist',  [HomeController::class, 'wishlist'])->name('wishlist');
+Route::get('/Product',  [HomeController::class, 'single_product'])->name('single-product');
+Route::get('/Thank you',  [HomeController::class, 'thankyou'])->name('thankyou');
+Route::get('/Compare',  [HomeController::class, 'compare'])->name('compare');
 
 Route::post('/phuong-thuc-route::post',  [HomeController::class, 'post'])->name('post_method');
 

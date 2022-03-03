@@ -133,7 +133,7 @@
                 <div class="category-slider-wrapper swiper-wrapper">
                     <div class="category-slider-item swiper-slide">
                         <div class="thumb-category">
-                            <a href="single-product.html">
+                            <a href="{{route('single-product')}}">
                                 <img src="assets/images/product-image/1.jpg" alt="product-image.jpg" />
                             </a>
                         </div>
@@ -150,7 +150,7 @@
                     </div>
                     <div class="category-slider-item swiper-slide">
                         <div class="thumb-category">
-                            <a href="single-product.html">
+                            <a href="{{route('single-product')}}">
                                 <img src="assets/images/product-image/2.jpg" alt="product-image.jpg" />
                             </a>
                         </div>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="category-slider-item swiper-slide">
                         <div class="thumb-category">
-                            <a href="single-product.html">
+                            <a href="{{route('single-product')}}">
                                 <img src="assets/images/product-image/3.jpg" alt="product-image.jpg" />
                             </a>
                         </div>
@@ -184,7 +184,7 @@
                     </div>
                     <div class="category-slider-item swiper-slide">
                         <div class="thumb-category">
-                            <a href="single-product.html">
+                            <a href="{{route('single-product')}}">
                                 <img src="assets/images/product-image/4.jpg" alt="product-image.jpg" />
                             </a>
                         </div>
@@ -201,7 +201,7 @@
                     </div>
                     <div class="category-slider-item swiper-slide">
                         <div class="thumb-category">
-                            <a href="single-product.html">
+                            <a href="{{route('single-product')}}">
                                 <img src="assets/images/product-image/5.jpg" alt="product-image.jpg" />
                             </a>
                         </div>
@@ -218,7 +218,7 @@
                     </div>
                     <div class="category-slider-item swiper-slide">
                         <div class="thumb-category">
-                            <a href="single-product.html">
+                            <a href="{{route('single-product')}}">
                                 <img src="assets/images/product-image/1.jpg" alt="product-image.jpg" />
                             </a>
                         </div>
@@ -279,7 +279,7 @@
                                     <div class="feature-slider-item swiper-slide">
                                         <article class="list-product">
                                             <div class="img-block">
-                                                <a href="single-product.html" class="thumbnail">
+                                                <a href="{{route('single-product')}}" class="thumbnail">
                                                     <img class="first-img" src="assets/images/product-image/6.jpg"
                                                         alt="" />
                                                     <img class="second-img" src="assets/images/product-image/7.jpg"
@@ -299,7 +299,7 @@
                                             <div class="product-decs">
                                                 <a class="inner-link" href="shop-4-column.html"><span>STUDIO
                                                         DESIGN</span></a>
-                                                <h2><a href="single-product.html" class="product-link">New Balance
+                                                <h2><a href="{{route('single-product')}}" class="product-link">New Balance
                                                         Arishi Sport v1</a></h2>
                                                 <div class="rating-product">
                                                     <i class="ion-android-star"></i>
@@ -331,7 +331,7 @@
                                         </article>
                                         <article class="list-product">
                                             <div class="img-block">
-                                                <a href="single-product.html" class="thumbnail">
+                                                <a href="{{route('single-product')}}" class="thumbnail">
                                                     <img class="first-img" src="assets/images/product-image/22.jpg"
                                                         alt="" />
                                                     <img class="second-img" src="assets/images/product-image/23.jpg"

@@ -25,8 +25,29 @@
             return view('site.contact');
         }
 
-        public function post() {
-            return view('demo.post_method_demo');
+        public function cart() {
+            return view('site.cart');
+        }
+        public function checkout() {
+            return view('site.checkout');
+        }
+        public function login() {
+            return view('site.login');
+        }
+        public function account() {
+            return view('site.account');
+        }
+        public function wishlist() {
+            return view('site.wishlist');
+        }
+        public function single_product() {
+            return view('site.single-product');
+        }
+        public function thankyou() {
+            return view('site.thankyou');
+        }
+        public function compare() {
+            return view('site.compare');
         }
     }
 ?>

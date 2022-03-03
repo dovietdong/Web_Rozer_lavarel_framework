@@ -58,9 +58,9 @@
 
                                     <ul class="dropdown-menu animation slideDownIn"
                                         aria-labelledby="dropdownMenuButton">
-                                        <li><a href="my-account.html">My account</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="login.html">Sign in</a></li>
+                                        <li><a href="{{route('account')}}">My account</a></li>
+                                        <li><a href="{{route('checkout')}}">Checkout</a></li>
+                                        <li><a href="{{route('login')}}">Sign in</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -196,7 +196,7 @@
                             <!--Cart info Start -->
                             <div class="header-tools tools-style-2 d-flex">
                                 <div class="cart-info d-flex align-self-center">
-                                    <a href="compare.html" class="shuffle" data-number="3"><i
+                                    <a href="{{route('compare')}}" class="shuffle" data-number="3"><i
                                             class="icon-shuffle"></i></a>
                                     <a href="#offcanvas-wishlist" class="heart offcanvas-toggle" data-number="3"><i
                                             class="icon-heart"></i></a>
@@ -353,7 +353,7 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index-3.html"><img class="img-responsive" src="assets/images/logo/logo.png"
+                        <a href="{{route('index')}}"><img class="img-responsive" src="assets/images/logo/logo.png"
                                 alt="logo.jpg" /></a>
                     </div>
                 </div>
@@ -363,7 +363,7 @@
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="cart-info d-flex align-self-center">
-                            <a href="compare.html" class="shuffle d-xs-none" data-number="3"><i
+                            <a href="{{route('compare')}}" class="shuffle d-xs-none" data-number="3"><i
                                     class="icon-shuffle"></i></a>
                             <a href="#offcanvas-wishlist" class="heart offcanvas-toggle d-xs-none" data-number="3"><i
                                     class="icon-heart"></i></a>
@@ -555,7 +555,7 @@
             </div>
             <div class="foot">
                 <div class="buttons">
-                    <a href="wishlist.html" class="btn btn-dark btn-hover-primary mt-30px">view wishlist</a>
+                    <a href="{{route('wishlist')}}" class="btn btn-dark btn-hover-primary mt-30px">view wishlist</a>
                 </div>
             </div>
         </div>
@@ -606,8 +606,8 @@
                     <span class="amount">$144.00</span>
                 </div>
                 <div class="buttons">
-                    <a href="cart.html" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
-                    <a href="checkout.html" class="btn btn-outline-dark current-btn">checkout</a>
+                    <a href="{{route('cart')}}" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
+                    <a href="{{route('checkout')}}" class="btn btn-outline-dark current-btn">checkout</a>
                 </div>
                 <p class="minicart-message">Free Shipping on All Orders Over $100!</p>
             </div>
@@ -648,9 +648,9 @@
             <div class="offcanvas-buttons mt-30px">
                 <div class="header-tools d-flex">
                     <div class="cart-info d-flex align-self-center">
-                        <a href="my-account.html" class="user"><i class="icon-user"></i></a>
-                        <a href="wishlist.html" data-number="3"><i class="icon-heart"></i></a>
-                        <a href="cart.html" data-number="3"><i class="icon-bag"></i></a>
+                        <a href="{{route('account')}}" class="user"><i class="icon-user"></i></a>
+                        <a href="{{route('wishlist')}}" data-number="3"><i class="icon-heart"></i></a>
+                        <a href="{{route('cart')}}" data-number="3"><i class="icon-bag"></i></a>
                     </div>
                 </div>
             </div>
@@ -693,130 +693,266 @@
             </div>
         </div>
     </div>
-<!-- Breadcrumb Area End-->
+    <!-- Breadcrumb Area End-->
     @yield('home')
     @yield('shop')
     @yield('blog')
     @yield('contact')
+    @yield('cart')
+    @yield('checkout')
+    @yield('login')
+    @yield('account')
+    @yield('thankyou')
+    @yield('wishlist')
+    @yield('single-product')
 
-
-<!-- Footer Area Start -->
-<div class="footer-area">
-            <div class="footer-container">
-                <div class="footer-top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-4 mb-md-30px mb-lm-30px">
-                                <div class="single-wedge">
-                                    <h4 class="footer-herading">ABOUT US</h4>
-                                    <p class="text-infor">We are a team of designers and developers that create high quality HTML template</p>
-                                    <div class="need-help">
-                                        <p class="phone-info">
-                                            NEED HELP?
-                                            <span>
-                                                0123456789 <br />
-                                                0123456789
-                                            </span>
-                                        </p>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">x</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12 mb-lm-100px mb-sm-30px">
+                            <!-- Swiper -->
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/11.jpg"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/12.jpg"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/13.jpg"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/14.jpg"
+                                            alt="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-2 mb-md-30px mb-lm-30px">
-                                <div class="single-wedge">
-                                    <h4 class="footer-herading">Information</h4>
-                                    <div class="footer-links">
-                                        <ul>
-                                            <li><a href="#">Delivery</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="#">Secure Payment</a></li>
-                                            <li><a href="{{route('contact')}}">Contact Us</a></li>
-                                            <li><a href="#">Sitemap</a></li>
-                                            <li><a href="#">Stores</a></li>
-                                        </ul>
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/11.jpg"
+                                            alt="">
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-2 mb-sm-30px mb-lm-30px">
-                                <div class="single-wedge">
-                                    <h4 class="footer-herading">CUSTOM LINKS</h4>
-                                    <div class="footer-links">
-                                        <ul>
-                                            <li><a href="#">Legal Notice</a></li>
-                                            <li><a href="#">Prices Drop</a></li>
-                                            <li><a href="#">New Products</a></li>
-                                            <li><a href="#">Best Sales</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                        </ul>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/12.jpg"
+                                            alt="">
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4 ">
-                                <div class="single-wedge">
-                                    <h4 class="footer-herading">NEWSLETTER</h4>
-                                    <div class="subscrib-text">
-                                        <p>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</p>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/13.jpg"
+                                            alt="">
                                     </div>
-                                    <div id="mc_embed_signup" class="subscribe-form">
-                                        <form
-                                            id="mc-embedded-subscribe-form"
-                                            class="validate"
-                                            novalidate=""
-                                            target="_blank"
-                                            name="mc-embedded-subscribe-form"
-                                            method="post"
-                                            action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef"
-                                        >
-                                            <div id="mc_embed_signup_scroll" class="mc-form">
-                                                <input class="email" type="email" required="" placeholder="Enter your email here.." name="EMAIL" value="" />
-                                                <div class="mc-news" aria-hidden="true" style="position: absolute; left: -5000px;">
-                                                    <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" />
-                                                </div>
-                                                <div class="clear">
-                                                    <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="Sign Up" />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="social-info">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="icon-social-facebook"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-twitter"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-instagram"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-google"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-social-instagram"></i></a>
-                                            </li>
-                                        </ul>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="assets/images/product-image/14.jpg"
+                                            alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-
-                            </div>
-                            <div class="col-md-6 text-end">
-                                <img class="payment-img" src="assets/images/icons/payment.png" alt="" />
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="product-details-content quickview-content">
+                                <h2>Originals Kaval Windbr</h2>
+                                <p class="reference">Reference:<span> demo_17</span></p>
+                                <div class="pro-details-rating-wrap">
+                                    <div class="rating-product">
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                        <i class="ion-android-star"></i>
+                                    </div>
+                                    <span class="read-review"><a class="reviews" href="#">Read reviews (1)</a></span>
+                                </div>
+                                <div class="pricing-meta">
+                                    <ul>
+                                        <li class="old-price not-cut">€18.90</li>
+                                    </ul>
+                                </div>
+                                <p class="quickview-para">Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm
+                                    tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim venialo quis
+                                    nostrud exercitation ullamco</p>
+                                <div class="pro-details-size-color">
+                                    <div class="pro-details-color-wrap">
+                                        <span>Color</span>
+                                        <div class="pro-details-color-content">
+                                            <ul>
+                                                <li class="blue"></li>
+                                                <li class="maroon active"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pro-details-quality">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    </div>
+                                    <div class="pro-details-cart btn-hover">
+                                        <a href="#"> + Add To Cart</a>
+                                    </div>
+                                </div>
+                                <div class="pro-details-wish-com">
+                                    <div class="pro-details-wishlist">
+                                        <a href="wishlist.html"><i class="ion-android-favorite-outline"></i>Add to
+                                            wishlist</a>
+                                    </div>
+                                    <div class="pro-details-compare">
+                                        <a href="{{route('compare')}}"><i class="ion-ios-shuffle-strong"></i>Add to compare</a>
+                                    </div>
+                                </div>
+                                <div class="pro-details-social-info">
+                                    <span>Share</span>
+                                    <div class="social-info">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="ion-social-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ion-social-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ion-social-google"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="ion-social-instagram"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Footer Area End -->
+    </div>
+    <!-- Modal end -->
+    <!-- Footer Area Start -->
+    <div class="footer-area">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 mb-md-30px mb-lm-30px">
+                            <div class="single-wedge">
+                                <h4 class="footer-herading">ABOUT US</h4>
+                                <p class="text-infor">We are a team of designers and developers that create high quality
+                                    HTML template</p>
+                                <div class="need-help">
+                                    <p class="phone-info">
+                                        NEED HELP?
+                                        <span>
+                                            0123456789 <br />
+                                            0123456789
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-2 mb-md-30px mb-lm-30px">
+                            <div class="single-wedge">
+                                <h4 class="footer-herading">Information</h4>
+                                <div class="footer-links">
+                                    <ul>
+                                        <li><a href="#">Delivery</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="#">Secure Payment</a></li>
+                                        <li><a href="{{route('contact')}}">Contact Us</a></li>
+                                        <li><a href="#">Sitemap</a></li>
+                                        <li><a href="#">Stores</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-2 mb-sm-30px mb-lm-30px">
+                            <div class="single-wedge">
+                                <h4 class="footer-herading">CUSTOM LINKS</h4>
+                                <div class="footer-links">
+                                    <ul>
+                                        <li><a href="#">Legal Notice</a></li>
+                                        <li><a href="#">Prices Drop</a></li>
+                                        <li><a href="#">New Products</a></li>
+                                        <li><a href="#">Best Sales</a></li>
+                                        <li><a href="{{route('login')}}">Login</a></li>
+                                        <li><a href="{{route('account')}}">My Account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 ">
+                            <div class="single-wedge">
+                                <h4 class="footer-herading">NEWSLETTER</h4>
+                                <div class="subscrib-text">
+                                    <p>You may unsubscribe at any moment. For that purpose, please find our contact info
+                                        in the legal notice.</p>
+                                </div>
+                                <div id="mc_embed_signup" class="subscribe-form">
+                                    <form id="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank"
+                                        name="mc-embedded-subscribe-form" method="post"
+                                        action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
+                                        <div id="mc_embed_signup_scroll" class="mc-form">
+                                            <input class="email" type="email" required=""
+                                                placeholder="Enter your email here.." name="EMAIL" value="" />
+                                            <div class="mc-news" aria-hidden="true"
+                                                style="position: absolute; left: -5000px;">
+                                                <input type="text" value="" tabindex="-1"
+                                                    name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" />
+                                            </div>
+                                            <div class="clear">
+                                                <input id="mc-embedded-subscribe" class="button" type="submit"
+                                                    name="subscribe" value="Sign Up" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="social-info">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="icon-social-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="icon-social-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="icon-social-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="icon-social-google"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="icon-social-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <img class="payment-img" src="assets/images/icons/payment.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Area End -->
     <!-- JS
 ============================================ -->
 
