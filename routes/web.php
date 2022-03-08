@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,19 +17,38 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'] )->name('index');
-Route::get('/Shop',  [HomeController::class, 'shop'])->name('shop');
-Route::get('/About',  [HomeController::class, 'about'])->name('about');
-Route::get('/Blogs',  [HomeController::class, 'blog'])->name('blog');
-Route::get('/Contact',  [HomeController::class, 'contact'])->name('contact');
-Route::get('/Cart',  [HomeController::class, 'cart'])->name('cart');
-Route::get('/Checkout',  [HomeController::class, 'checkout'])->name('checkout');
-Route::get('/Login',  [HomeController::class, 'login'])->name('login');
-Route::get('/Account',  [HomeController::class, 'account'])->name('account');
-Route::get('/Wishlist',  [HomeController::class, 'wishlist'])->name('wishlist');
-Route::get('/Product',  [HomeController::class, 'single_product'])->name('single-product');
-Route::get('/Thank you',  [HomeController::class, 'thankyou'])->name('thankyou');
-Route::get('/Compare',  [HomeController::class, 'compare'])->name('compare');
+Route::group(['prefix' => ''], function() {
+    Route::get('/', [HomeController::class, 'index'] )->name('index');
+    Route::get('/shop',  [HomeController::class, 'shop'])->name('shop');
+    Route::get('/about',  [HomeController::class, 'about'])->name('about');
+    Route::get('/blog',  [HomeController::class, 'blog'])->name('blog');
+    Route::get('/contact',  [HomeController::class, 'contact'])->name('contact');
+    Route::get('/cart',  [HomeController::class, 'cart'])->name('cart');
+    Route::get('/checkout',  [HomeController::class, 'checkout'])->name('checkout');
+    Route::get('/login',  [HomeController::class, 'login'])->name('login');
+    Route::get('/account',  [HomeController::class, 'account'])->name('account');
+    Route::get('/wishlist',  [HomeController::class, 'wishlist'])->name('wishlist');
+    Route::get('/product',  [HomeController::class, 'single_product'])->name('single-product');
+    Route::get('/thank you',  [HomeController::class, 'thankyou'])->name('thankyou');
+    Route::get('/compare',  [HomeController::class, 'compare'])->name('compare');
+});
 
-Route::post('/phuong-thuc-route::post',  [HomeController::class, 'post'])->name('post_method');
+// Route::group(['prefix' => 'admin'], function() {
+//     Route::get('/',  [HomeController::class, 'admin'])->name('admin');
+
+//     Route::resources([
+//         'category' => CategoryController::class,
+//         'product' => ProductController::class
+//     ]);
+// });
+
+Route::prefix('admin')->group(function () {
+     Route::get('/',  [HomeController::class, 'admin'])->name('admin');
+
+    Route::resources([
+        'category' => CategoryController::class,
+        'product' => ProductController::class
+    ]);
+});
+
 

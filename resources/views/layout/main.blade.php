@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon.png" />
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800&amp;display=swap"
@@ -37,6 +38,7 @@
     <!-- Main Style CSS -->
     <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
 </head>
+
 
 <body>
     <!-- Header Section Start From Here -->
@@ -679,6 +681,8 @@
 
     <div class="offcanvas-overlay"></div>
     <!-- Breadcrumb Area Start -->
+    @if(request()->is('/'))
+    @else
     <div class="breadcrumb-area">
         <div class="container">
             <div class="row">
@@ -686,13 +690,16 @@
                     <div class="breadcrumb-content">
                         <ul class="nav">
                             <li><a href="{{route('index')}}">Home</a></li>
-                            <li>@yield('title')</li>
+                            <li>
+                                @yield('title')
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <!-- Breadcrumb Area End-->
     @yield('home')
     @yield('shop')
@@ -806,7 +813,8 @@
                                             wishlist</a>
                                     </div>
                                     <div class="pro-details-compare">
-                                        <a href="{{route('compare')}}"><i class="ion-ios-shuffle-strong"></i>Add to compare</a>
+                                        <a href="{{route('compare')}}"><i class="ion-ios-shuffle-strong"></i>Add to
+                                            compare</a>
                                     </div>
                                 </div>
                                 <div class="pro-details-social-info">
