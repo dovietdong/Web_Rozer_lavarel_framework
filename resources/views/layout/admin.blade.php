@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title>@yield('title')</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -92,12 +92,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('category.create')}}l" class="nav-link">
+                                    <a href="{{route('category.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Thêm mới danh mục</p>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
 
@@ -136,15 +136,18 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Blank Page</h1>
+                    <div class="">
+                        <div class="">
+                            <h1>@yield('title')</h1>
+                            @yield('dashboard')
+                            @yield('category')
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
         </div>
         <!-- /.content-wrapper -->
+
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">

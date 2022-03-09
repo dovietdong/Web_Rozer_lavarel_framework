@@ -48,7 +48,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => 'ph2103lm',
+            'database' => 'lavarel_nhom_2',
             'username' => 'root',
             'password' => '',
             'unix_socket' => env('DB_SOCKET', ''),

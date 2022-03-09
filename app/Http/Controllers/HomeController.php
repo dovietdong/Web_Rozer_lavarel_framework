@@ -4,7 +4,7 @@
     class HomeController extends Controller {
         public function index() {
             $category = Category::all();
-           $category = Category::paginate(10);
+            $category = Category::paginate(10);
             //dd($category);
             return view('site.index', compact('category'));
         }

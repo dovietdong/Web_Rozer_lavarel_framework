@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Category;
-// use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        echo('Categorry panel');
+        $data = Category::paginate(5);
+        return view('admin.category.index', compact('data'));
     }
 
     /**
@@ -24,8 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        echo('Categorry panel create');
-        
+        return view('admin.category.create');
     }
 
     /**
@@ -34,10 +34,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        echo('Categorry panel store');
-        
+        //dd($request->only('name', 'status'));
+        Category::create($request->only('name', 'status'));
+        return redirect()->route('category.index');
     }
 
     /**
@@ -46,10 +47,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Category $category)
     {
-        echo('Categorry panel show');
-        
+        //
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Category $category)
     {
         //
     }
@@ -70,7 +70,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -81,8 +81,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Category $category)
     {
-        //
+        $category -> delete();
+        return redirect()->route('category.index');
     }
 }
