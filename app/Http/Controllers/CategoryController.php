@@ -60,7 +60,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // dd($category);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -72,7 +73,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        // dd($request->only('name', 'status'));
+        $category->update($request->only('name', 'status'));
+        return redirect()->route('category.index');
     }
 
     /**
