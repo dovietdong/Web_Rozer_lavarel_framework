@@ -33,22 +33,22 @@ Route::group(['prefix' => ''], function() {
     Route::get('/compare',  [HomeController::class, 'compare'])->name('compare');
 });
 
-// Route::group(['prefix' => 'admin'], function() {
-//     Route::get('/',  [HomeController::class, 'admin'])->name('admin');
-
-//     Route::resources([
-//         'category' => CategoryController::class,
-//         'product' => ProductController::class
-//     ]);
-// });
-
-Route::prefix('admin')->group(function () {
-     Route::get('/',  [HomeController::class, 'admin'])->name('admin');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/',  [HomeController::class, 'admin'])->name('layout.admin');
 
     Route::resources([
         'category' => CategoryController::class,
         'product' => ProductController::class
     ]);
 });
+
+// Route::prefix('admin')->group(function () {
+//      Route::get('/',  [HomeController::class, 'admin'])->name('admin');
+
+//     Route::resources([
+//         'category' => CategoryController::class,
+//         'product' => ProductController::class
+//     ]);
+// });
 
 

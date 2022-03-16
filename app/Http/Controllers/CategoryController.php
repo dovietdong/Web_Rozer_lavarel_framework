@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryEditRequest;
+
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::paginate(5);
+        $data = Category::search()->paginate(5);
         return view('admin.category.index', compact('data'));
     }
 
@@ -34,11 +37,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     //them moi
+    public function store(CategoryCreateRequest $request)
     {
         //dd($request->only('name', 'status'));
         Category::create($request->only('name', 'status'));
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('yes','Thêm mới thành công');
     }
 
     /**
@@ -71,11 +75,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryEditRequest $request, Category $category)
     {
         // dd($request->only('name', 'status'));
         $category->update($request->only('name', 'status'));
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('yes','Cập nhật thành công');
     }
 
     /**
@@ -87,6 +91,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category -> delete();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('yes','Xóa thành công');
     }
 }

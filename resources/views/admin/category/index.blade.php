@@ -2,16 +2,14 @@
 @section('title', 'Danh sách danh mục')
 
 @section('category')
-<div class="form-inline">
-    <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search" name="Search" >
-        <div class="input-group-append">
-            <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
-            </button>
-        </div>
+<form class="form-inline" method="GET">
+    <input class="form-control form-control-sidebar" type="search" placeholder="search" name="search">
+    <div class="input-group-append">
+        <button type="submit" class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+        </button>
     </div>
-</div>
+</form>
 <table class="table table-hover">
     <thead>
         <tr>

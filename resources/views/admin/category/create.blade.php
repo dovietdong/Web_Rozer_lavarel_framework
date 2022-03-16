@@ -8,6 +8,7 @@
     <div class="form-group">
         <label for="">Tên danh mục</label>
         <input type="text" class="form-control" name="name"  placeholder="Input field">
+        <p>@error ('name') {{$message}} @enderror</p>
     </div>
     
     <div class="radio">
