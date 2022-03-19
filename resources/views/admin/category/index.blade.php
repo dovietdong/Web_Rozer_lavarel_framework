@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('title', 'Danh sách danh mục')
 
-@section('category')
+@section('main')
 <form class="form-inline" method="GET">
     <input class="form-control form-control-sidebar" type="search" placeholder="search" name="search">
     <div class="input-group-append">

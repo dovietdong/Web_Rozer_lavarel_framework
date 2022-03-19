@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
@@ -33,8 +34,11 @@ Route::group(['prefix' => ''], function() {
     Route::get('/compare',  [HomeController::class, 'compare'])->name('compare');
 });
 
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('/',  [HomeController::class, 'admin'])->name('layout.admin');
+Route::get('/admin/layout',  [AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/layout',  [AdminController::class, 'auth_login'])->name('admin.login');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('/',  [AdminController::class, 'dashboard'])->name('layout.admin');
 
     Route::resources([
         'category' => CategoryController::class,
@@ -42,13 +46,5 @@ Route::group(['prefix' => 'admin'], function() {
     ]);
 });
 
-// Route::prefix('admin')->group(function () {
-//      Route::get('/',  [HomeController::class, 'admin'])->name('admin');
-
-//     Route::resources([
-//         'category' => CategoryController::class,
-//         'product' => ProductController::class
-//     ]);
-// });
 
 

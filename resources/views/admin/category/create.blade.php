@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('title', 'Thêm mới danh mục')
 
-@section('category')
+@section('main')
 
 <form action="{{route('category.store')}}" method="post" role="form">
     @csrf

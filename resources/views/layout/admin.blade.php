@@ -137,7 +137,7 @@
                     @endif
                     <h1>@yield('title')</h1>
                     @yield('dashboard')
-                    @yield('category')
+                    @yield('main')
                 </div><!-- /.container-fluid -->
             </section>
         </div>

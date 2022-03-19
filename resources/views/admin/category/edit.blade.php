@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('title', 'Chỉnh sửa danh mục')
 
-@section('category')
+@section('main')
 <form action="{{route('category.update', $category->id)}}" method="post" role="form">
     @csrf @method('PUT')
     <div class="form-group">

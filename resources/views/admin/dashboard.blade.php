@@ -1,6 +1,6 @@
 @extends('layout.admin')
-@section('title', 'Quản lí danh mục')
 
-@section('category')
+@section('main')
+
 <h1>category</h1>
 @stop();
