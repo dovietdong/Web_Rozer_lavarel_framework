@@ -20,7 +20,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Category::orderBy('name','ASC')->get();
+        $data = Product::search()->paginate(5);
+        return view('admin.product.index',compact('data','cats'));
     }
 
     /**
@@ -84,7 +86,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        //dd($product);
+        $cats = Category::orderBy('name','ASC')->get();
+        return view('admin.product.edit',compact('product','cats'));
     }
 
     /**
@@ -93,10 +97,32 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
+     * 
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductEditRequest $req, Product $product)
     {
-        //
+        $data = $req->all('category_id','name','price','sale_price','descriptions','status');
+        if($req->has('upload')){
+            //lấy tên file từ upload
+            $check_name = $req->upload->getClientOriginalName();
+            //định dạng tên file
+            //lấy các thành phần của tên file
+            $path_file_name = pathinfo($check_name);
+            $ext = $path_file_name['extension'];
+            $name = $path_file_name['filename'];
+            $file_name = Str::slug($name);
+            $final_name = $file_name.'-'.time().'.'.$ext;
+            //lưu ảnh lên server, lưu đường dẫn file
+            $check_upload = $req->upload->move(public_path('uploads/'),$final_name);
+            //thêm trường image vào $data
+            $data['image'] = $final_name;
+            //lưu tên ảnh vào database
+        }
+        if($product->update($data)){
+            return redirect()->route('product.index')->with('yes','Cập nhật sản phẩm thành công');
+        }
+        return redirect()->back()->with('no','Có lỗi xảy ra');
+        //dd($data);
     }
 
     /**
@@ -107,6 +133,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index')->with('yes','Xóa sản phẩm thành công');
     }
 }

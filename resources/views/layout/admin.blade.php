@@ -167,4 +167,5 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('dist') }}/js/demo.js"></script>
 </body>
+
 </html>

@@ -19,6 +19,17 @@ class Product extends Model
             $query = $query->where('name','LIKE','%'.$search_value.'%');
             //dd($search_value);
         }
+        $cat_id = request()->cat_id;
+        if($cat_id){
+            $query = $query->where('category_id',$cat_id);
+            //dd($search_value);
+        }
         return $query;
+    }
+
+    //quan hệ 1-1
+    public function cat()
+    {
+        return $this->hasOne(category::class,'id','category_id');
     }
 }

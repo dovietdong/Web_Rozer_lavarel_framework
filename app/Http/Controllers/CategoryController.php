@@ -53,7 +53,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        //dd($category->product);
     }
 
     /**

@@ -13,12 +13,18 @@ class Category extends Model
     public $timestamps = false;
 
     //kĩ thuật scope trong lavarel
-    function scopeSearch($query){
+    public function scopeSearch($query){
         $search_value = request()->search;
         if($search_value){
             $query = $query->where('name','LIKE','%'.$search_value.'%');
             //dd($search_value);
         }
         return $query;
+    }
+    
+    //quan hệ 1-n (thêm s vào product)
+    function products()
+    {
+        return $this->hasMany(product::class);
     }
 }

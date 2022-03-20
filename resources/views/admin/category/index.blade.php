@@ -38,8 +38,8 @@
                 <th>
                     <button class="btn btnsm btn-danger" onclick="return confirm('Bạn có muốn xóa ko?')">Xóa</button>
                 </th>
-                <th><a href="{{route('category.edit', $model->id)}}" class="btn btnsm btn-primary">Sửa</a></th>
             </form>
+            <th><a href="{{route('category.edit', $model->id)}}" class="btn btnsm btn-primary">Sửa</a></th>
         </tr>
         @endforeach
     </tbody>
