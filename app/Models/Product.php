@@ -32,4 +32,17 @@ class Product extends Model
     {
         return $this->hasOne(category::class,'id','category_id');
     }
+
+    //giá khuyến mãi
+    function scopeSale($query, $limit=4)
+    {
+        $query = $query->where('sale_price','>','0')->limit($limit)->get();
+        return $query;
+    }
+    //sản phẩm mới
+    function scopeNew($query, $limit=4)
+    {
+        $query = $query->orderBY('id','DESC')->limit($limit)->get();
+        return $query;
+    }
 }

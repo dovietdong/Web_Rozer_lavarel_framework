@@ -6,7 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryEditRequest;
-
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::search()->paginate(5);
+        $data = Category::search()->paginate(20);
         return view('admin.category.index', compact('data'));
     }
 

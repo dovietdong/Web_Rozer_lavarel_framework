@@ -1,13 +1,14 @@
 <?php 
     namespace App\Http\Controllers;
     use App\Models\Category;
+    use App\Models\Product;
  
     class HomeController extends Controller {
         public function index() {
-            $category = Category::all();
             $category = Category::paginate(10);
-            //dd($category);
-            return view('site.index', compact('category'));
+            $product_sale = Product::sale();
+            $product_new = Product::new(10);
+            return view('site.index', compact('category','product_sale','product_new'));
         }
         public function shop() {
             return view('site.shop');

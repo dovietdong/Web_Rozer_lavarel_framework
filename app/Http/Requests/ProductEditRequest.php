@@ -29,7 +29,7 @@ class ProductEditRequest extends FormRequest
             //lt: giá khuyến mãi nhỏ hơn giá gốc, lte: giá khuyến mãi bằng giá gốc
             'sale_price' => 'lt:price|numeric',
             //'upload' => 'mimes:jpg,jpeg,png,gif|required',
-            'descriptions' => 'required'
+            //'descriptions' => 'required'
         ];
     }
 
@@ -43,7 +43,7 @@ class ProductEditRequest extends FormRequest
             'sale_price.numeric' => 'Giá khuyến mãi phải là số',
             'sale_price.lt' => 'Giá khuyến mãi phải nhỏ hơn giá sản phẩm',
             'upload.required' => 'Ảnh chưa có',
-            'descriptions.required' => 'Chưa có mô tả sản phẩm',
+            //'descriptions.required' => 'Chưa có mô tả sản phẩm',
         ];
     }   
 }

@@ -32,7 +32,7 @@
                 @else
                 <label class="badge badge-danger">Ẩn</label>
                 @endif
-            </td>
+            </td>    
             <form action="{{route('category.destroy',$model->id)}}" method="post">
                 @csrf @method('DELETE')
                 <th>

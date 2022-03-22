@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 
 use App\Models\Category;
 use App\Models\Product;
@@ -20,8 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        //$count = Category::where('category_id')->count();
         $cats = Category::orderBy('name','ASC')->get();
-        $data = Product::search()->paginate(5);
+        $data = Product::search()->paginate(20);
         return view('admin.product.index',compact('data','cats'));
     }
 
@@ -56,7 +55,7 @@ class ProductController extends Controller
         $file_name = Str::slug($name);
         $final_name = $file_name.'-'.time().'.'.$ext;
         //lưu ảnh lên server, lưu đường dẫn file
-        $check_upload = $req->upload->move(public_path('uploads/'),$final_name);
+        $check_upload = $req->upload->move(public_path('uploads'),$final_name);
         //thêm trường image vào $data
         $data['image'] = $final_name;
         //lưu tên ảnh vào database
@@ -113,7 +112,7 @@ class ProductController extends Controller
             $file_name = Str::slug($name);
             $final_name = $file_name.'-'.time().'.'.$ext;
             //lưu ảnh lên server, lưu đường dẫn file
-            $check_upload = $req->upload->move(public_path('uploads/'),$final_name);
+            $check_upload = $req->upload->move(public_path('uploads'),$final_name);
             //thêm trường image vào $data
             $data['image'] = $final_name;
             //lưu tên ảnh vào database
