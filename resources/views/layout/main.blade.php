@@ -32,8 +32,8 @@
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <link rel="stylesheet" href="{{ url('assets') }}/css/vendor/vendor.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css" />
-    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/plugins/plugins.min.css" />
+    <link rel="stylesheet" href="{{ url('assets') }}/css/style.min.css">
 
     <!-- Main Style CSS -->
     <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="{{route('index')}}"><img class="img-responsive" src="assets/images/logo/logo-2.png"
+                            <a href="{{route('index')}}"><img class="img-responsive" src="{{ url('assets') }}/images/logo/logo-2.png"
                                     alt="logo.jpg" /></a>
                         </div>
                     </div>
@@ -220,96 +220,9 @@
                         <div class="header-menu-vertical">
                             <h4 class="menu-title">All Cattegories</h4>
                             <ul class="menu-content display-none">
-                                <li class="menu-item">
-                                    <a href="#">Electronics <i class="ion-ios-arrow-right"></i></a>
-                                    <ul class="sub-menu flex-wrap">
-                                        <li>
-                                            <a href="#">
-                                                <span> <strong> Accessories & Parts</strong></span>
-                                            </a>
-                                            <ul class="submenu-item">
-                                                <li><a href="#">Cables & Adapters</a></li>
-                                                <li><a href="#">Batteries</a></li>
-                                                <li><a href="#">Chargers</a></li>
-                                                <li><a href="#">Bags & Cases</a></li>
-                                                <li><a href="#">Electronic Cigarettes</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span><strong>Camera & Photo</strong></span>
-                                            </a>
-                                            <ul class="submenu-item">
-                                                <li><a href="#">Digital Cameras</a></li>
-                                                <li><a href="#">Camcorders</a></li>
-                                                <li><a href="#">Camera Drones</a></li>
-                                                <li><a href="#">Action Cameras</a></li>
-                                                <li><a href="#">Photo Studio Supplie</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span><strong>Smart Electronics</strong></span>
-                                            </a>
-                                            <ul class="submenu-item">
-                                                <li><a href="#">Wearable Devices</a></li>
-                                                <li><a href="#">Smart Home Appliances</a></li>
-                                                <li><a href="#">Smart Remote Controls</a></li>
-                                                <li><a href="#">Smart Watches</a></li>
-                                                <li><a href="#">Smart Wristbands</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span><strong>Audio & Video</strong></span>
-                                            </a>
-                                            <ul class="submenu-item">
-                                                <li><a href="#">Televisions</a></li>
-                                                <li><a href="#">TV Receivers</a></li>
-                                                <li><a href="#">Projectors</a></li>
-                                                <li><a href="#">Audio Amplifier Boards</a></li>
-                                                <li><a href="#">TV Sticks</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span><strong>Portable Audio & Video</strong></span>
-                                            </a>
-                                            <ul class="submenu-item">
-                                                <li><a href="#">Headphones</a></li>
-                                                <li><a href="#">Speakers</a></li>
-                                                <li><a href="#">MP3 Players</a></li>
-                                                <li><a href="#">VR/AR Devices</a></li>
-                                                <li><a href="#">Microphones</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <img src="assets/images/menu-image/banner-mega1.jpg" alt="" />
-                                        </li>
-                                    </ul>
-                                    <!-- sub menu -->
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Video Games <i class="ion-ios-arrow-right"></i></a>
-                                    <ul class="sub-menu sub-menu-2">
-                                        <li>
-                                            <ul class="submenu-item">
-                                                <li><a href="#">Handheld Game Players</a></li>
-                                                <li><a href="#">Game Controllers</a></li>
-                                                <li><a href="#">Joysticks</a></li>
-                                                <li><a href="#">Stickers</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <!-- sub menu -->
-                                </li>
-                                <li class="menu-item"><a href="#">Televisions</a></li>
-                                <li class="menu-item"><a href="#">Digital Cameras</a></li>
-                                <li class="menu-item"><a href="#">Headphones</a></li>
-                                <li class="menu-item"><a href="#"> Wearable Devices</a></li>
-                                <li class="menu-item"><a href="#"> Smart Watches</a></li>
-                                <li class="menu-item"><a href="#"> Game Controllers</a></li>
-                                <li class="menu-item"><a href="#"> Smart Home Appliances</a></li>
+                                @foreach($cats as $cat)
+                                <li class="menu-item"><a href="{{route('category',$cat->id)}}">{{$cat->name}}</a></li>
+                                @endforeach
                             </ul>
                             <!-- menu content -->
                         </div>
@@ -652,7 +565,7 @@
                     <div class="cart-info d-flex align-self-center">
                         <a href="{{route('account')}}" class="user"><i class="icon-user"></i></a>
                         <a href="{{route('wishlist')}}" data-number="3"><i class="icon-heart"></i></a>
-                        <a href="{{route('cart')}}" data-number="3"><i class="icon-bag"></i></a>
+                        <a href="" data-number="3"><i class="icon-bag"></i></a>
                     </div>
                 </div>
             </div>
@@ -712,6 +625,8 @@
     @yield('thankyou')
     @yield('wishlist')
     @yield('single-product')
+    @yield('category')
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
@@ -978,8 +893,8 @@
         <script src="assets/js/plugins/elevateZoom.js"></script> -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script>
+    <script src="{{ url('assets') }}/js/vendor/vendor.min.js"></script>
+    <script src="{{ url('assets') }}/js/plugins/plugins.min.js"></script>
 
     <!-- Main Activation JS -->
     <script src="assets/js/main.js"></script>

@@ -133,7 +133,7 @@
             <div class="category-slider-wrapper swiper-wrapper">
                 <div class="category-slider-item swiper-slide">
                     <div class="thumb-category">
-                        <a href="{{route('single-product')}}">
+                        <a href="">
                             <img src="assets/images/product-image/1.jpg" alt="product-image.jpg" />
                         </a>
                     </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="category-slider-item swiper-slide">
                     <div class="thumb-category">
-                        <a href="{{route('single-product')}}">
+                        <a href="">
                             <img src="assets/images/product-image/2.jpg" alt="product-image.jpg" />
                         </a>
                     </div>
@@ -167,7 +167,7 @@
                 </div>
                 <div class="category-slider-item swiper-slide">
                     <div class="thumb-category">
-                        <a href="{{route('single-product')}}">
+                        <a href="">
                             <img src="assets/images/product-image/3.jpg" alt="product-image.jpg" />
                         </a>
                     </div>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="category-slider-item swiper-slide">
                     <div class="thumb-category">
-                        <a href="{{route('single-product')}}">
+                        <a href="">
                             <img src="assets/images/product-image/4.jpg" alt="product-image.jpg" />
                         </a>
                     </div>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="category-slider-item swiper-slide">
                     <div class="thumb-category">
-                        <a href="{{route('single-product')}}">
+                        <a href="">
                             <img src="assets/images/product-image/5.jpg" alt="product-image.jpg" />
                         </a>
                     </div>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="category-slider-item swiper-slide">
                     <div class="thumb-category">
-                        <a href="{{route('single-product')}}">
+                        <a href="">
                             <img src="assets/images/product-image/1.jpg" alt="product-image.jpg" />
                         </a>
                     </div>
@@ -281,7 +281,7 @@
                                     aria-label="2 / 17" style="width: 232.5px;">
                                     <article class="list-product">
                                         <div class="img-block">
-                                            <a href="" class="thumbnail">
+                                            <a href="{{route('single_product',['product'=>$pn->id,'slug'=>Str::slug($pn->name)])}}" class="thumbnail">
                                                 <img class="first-img" src="{{ url('uploads') }}/{{$pn->image}}" alt="">
                                                 <img class="second-img" src="{{ url('uploads') }}/{{$pn->image}}"
                                                     alt="">
@@ -298,9 +298,9 @@
                                             <li class="new">New</li>
                                         </ul>
                                         <div class="product-decs">
-                                            <a class="inner-link" href="shop-4-column.html"><span>
+                                            <a class="inner-link" href="{{route('category',$pn->cat->id)}}"><span>
                                                     {{$pn->cat->name}}</span></a>
-                                            <h2><a href="single-product.html" class="product-link">
+                                            <h2><a href="{{route('single_product',['product'=>$pn->id,'slug'=> Str::slug($pn->name)])}}" class="product-link">
                                                     {{$pn->name}}
                                                 </a></h2>
                                             <div class="rating-product">
@@ -312,7 +312,7 @@
                                             </div>
                                             <div class="pricing-meta">
                                                 <ul>
-                                                    <li class="old-price">€{{number_format($pn->price, 2)}} đ</li>
+                                                    <li class="old-price">€{{number_format($pn->price, 2)}}</li>
                                                     <li class="current-price">€{{number_format($pn->sale_price, 2)}}
                                                     </li>
                                                     <li class="discount-price">-10%</li>
@@ -321,7 +321,7 @@
                                         </div>
                                         <div class="add-to-link">
                                             <ul>
-                                                <li class="cart"><a title="Add to cart" href="#"><i
+                                                <li class="cart"><a title="Add to cart" href="{{route('cart-add',$pn->id)}}"><i
                                                             class="icon-bag"></i></a></li>
                                                 <li>
                                                     <a title="Add to wishlist" href="wishlist.html"><i
@@ -366,15 +366,17 @@
                                                 <i class="ion-android-star"></i>
                                             </div>
                                             <div class="pricing-meta">
+                                                @if($pn->sale_price != 0)
                                                 <ul>
                                                     <li class="old-price">€{{number_format($pn->price,2)}}</li>
-                                                    @if($pn->sale_price == 0)
-                                                    <li></li>
-                                                    @else
                                                     <li class="current-price">€{{number_format($pn->sale_price,2)}}</li>
-                                                    @endif
                                                     <li class="discount-price">-10%</li>
                                                 </ul>
+                                                @else
+                                                <ul>
+                                                    <li class="old-price not-cut">€{{number_format($pn->price,2)}}</li>
+                                                </ul>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="add-to-link">

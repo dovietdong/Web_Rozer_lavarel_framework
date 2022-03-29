@@ -22,9 +22,6 @@
         public function contact() {
             return view('site.contact');
         }
-        public function cart() {
-            return view('site.cart');
-        }
         public function checkout() {
             return view('site.checkout');
         }
@@ -37,8 +34,9 @@
         public function wishlist() {
             return view('site.wishlist');
         }
-        public function single_product() {
-            return view('site.single-product');
+        public function single_product(Product $product) {
+            $products_cat = $product->cat->products()->limit(12)->get();
+           return view('site.single-product',compact('product','products_cat'));
         }
         public function thankyou() {
             return view('site.thankyou');
@@ -48,6 +46,11 @@
         }
         public function admin() {
             return view('layout.admin');
+        }
+        public function category(Category $category) {
+            //dd($category);
+            $products = $category->products()->paginate(12);
+            return view('site.category', compact('products'));
         }
     }
 ?>
