@@ -40,7 +40,9 @@ class CartController extends Controller
         
         //lưu các sản phẩm vừa thêm vào session
         session(['cart' => $carts]);
-        return redirect()->route('cart')->with('ok','thêm sản phẩm vào giỏ hàng thành công');
+        //return redirect()->route('cart')->with('ok','thêm sản phẩm vào giỏ hàng thành công');
+        return redirect()->back();
+
     }
 
     public function remove(Product $product){
@@ -50,14 +52,28 @@ class CartController extends Controller
         unset( $carts[$product->id]); 
         //cập nhật lại giỏ hàng
         session(['cart' => $carts]);
-        return redirect()->route('cart')->with('ok','xóa thành công');
+        //return redirect()->route('cart')->with('ok','xóa thành công');
+        return redirect()->back();
     }
 
     public function update(Product $product, Request $req){
         $carts = session('cart') ? session('cart'):[];
-        $arr = array();
+       //khai báo mảng lưu các request trên url kết quả là một mảng kết hợp có key là product_id, value là giá trị update nhận từ form gửi lên (xem lại form cart hoặc dd($req))
         $arr = $req->query($product->id);
-       dd($product);   
+        // mảng để lưu các giá trị của key trong mảng trên
+        $array_key = array_keys($arr);
+       
+       foreach($carts as $cart){
+           foreach($array_key as $ak){
+               if($cart->id == $ak ){
+                   $cart->quantity = (int)$arr[$ak];
+               }
+           }
+       }
+       //lưu các sản phẩm vừa thêm vào session
+       session(['cart' => $carts]);
+       //return redirect()->route('cart')->with('ok','thêm sản phẩm vào giỏ hàng thành công');
+       return redirect()->back();
     }
 
     public function clear(){
