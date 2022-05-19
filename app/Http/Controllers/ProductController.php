@@ -60,7 +60,8 @@ class ProductController extends Controller
         $data['image'] = $final_name;
         //lưu tên ảnh vào database
         if(Product::create($data)){
-            return redirect()->route('product.index')->with('yes','Thêm mới sản phẩm thành công');
+            //return redirect()->route('product.index')->with('yes','Thêm mới sản phẩm thành công');
+            return redirect()->back()->with('yes','them moi sản phẩm thành công');
         }
         return redirect()->back()->with('no','Có lỗi xảy ra');
         //dd($data);
