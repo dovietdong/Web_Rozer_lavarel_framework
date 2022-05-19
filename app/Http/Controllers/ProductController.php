@@ -19,9 +19,11 @@ class ProductController extends Controller
     public function index()
     {
         //$count = Category::where('category_id')->count();
+        $search_value = request()->search;
+        $cat_id = request()->cat_id;
         $cats = Category::orderBy('name','ASC')->get();
         $data = Product::search()->paginate(20);
-        return view('admin.product.index',compact('data','cats'));
+        return view('admin.product.index',compact('data','cats','search_value','cat_id'));
     }
 
     /**

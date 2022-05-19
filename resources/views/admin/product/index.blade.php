@@ -3,11 +3,12 @@
 
 @section('main')
 <form class="form-inline" method="GET">
-    <input class="form-control form-control-sidebar" type="search" placeholder="Tìm tên sản phẩm" name="search">
+    <input class="form-control form-control-sidebar" type="search" placeholder="Tìm tên sản phẩm" name="search" value="{{$search_value}}">
     <div class="input-group-append">
         <select name="cat_id" id="input" class="form-control ml-2">
             <option value="">Tìm theo danh mục</option>
             @foreach($cats as $cat)
+            <!-- <option value="{{$cat->$cat_id}}">{{$cat->name}}</option> -->
             <option value="{{$cat->id}}">{{$cat->name}}</option>
             @endforeach
         </select>

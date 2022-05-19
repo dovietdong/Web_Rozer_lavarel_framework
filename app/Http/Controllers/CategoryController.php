@@ -18,7 +18,9 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::search()->paginate(20);
-        return view('admin.category.index', compact('data'));
+        $search_value = request()->search;
+        //dd($search_value);
+        return view('admin.category.index', compact('data','search_value'));
     }
 
     /**

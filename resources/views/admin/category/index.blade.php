@@ -3,7 +3,7 @@
 
 @section('main')
 <form class="form-inline" method="GET">
-    <input class="form-control form-control-sidebar" type="search" placeholder="search" name="search">
+    <input class="form-control form-control-sidebar" type="search" placeholder="search" name="search" value="{{$search_value}}">
     <div class="input-group-append">
         <button type="submit" class="btn btn-sidebar">
             <i class="fas fa-search fa-fw"></i>
