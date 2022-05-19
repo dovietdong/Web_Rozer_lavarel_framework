@@ -22,15 +22,6 @@
         public function contact() {
             return view('site.contact');
         }
-        public function checkout() {
-            return view('site.checkout');
-        }
-        public function login() {
-            return view('site.login');
-        }
-        public function account() {
-            return view('site.account');
-        }
         public function wishlist() {
             return view('site.wishlist');
         }

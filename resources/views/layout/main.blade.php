@@ -60,9 +60,10 @@
 
                                     <ul class="dropdown-menu animation slideDownIn"
                                         aria-labelledby="dropdownMenuButton">
-                                        <li><a href="{{route('account')}}">My account</a></li>
-                                        <li><a href="{{route('checkout')}}">Checkout</a></li>
-                                        <li><a href="{{route('login')}}">Sign in</a></li>
+                                        <li><a href="{{route('account.profile')}}">My account</a></li>
+                                        <li><a href="{{route('account.logout')}}">Checkout</a></li>
+                                        <li><a href="{{route('account.login')}}">Sign in</a></li>
+                                        <li><a href="{{route('account.register')}}">Register</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -77,8 +78,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="{{route('index')}}"><img class="img-responsive" src="{{ url('assets') }}/images/logo/logo-2.png"
-                                    alt="logo.jpg" /></a>
+                            <a href="{{route('index')}}"><img class="img-responsive"
+                                    src="{{ url('assets') }}/images/logo/logo-2.png" alt="logo.jpg" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 align-self-center">
@@ -202,7 +203,8 @@
                                             class="icon-shuffle"></i></a>
                                     <a href="#offcanvas-wishlist" class="heart offcanvas-toggle" data-number="3"><i
                                             class="icon-heart"></i></a>
-                                    <a href="#offcanvas-cart" class="bag offcanvas-toggle" data-number="{{$totalQuantity}}"><i
+                                    <a href="#offcanvas-cart" class="bag offcanvas-toggle"
+                                        data-number="{{$totalQuantity}}"><i
                                             class="icon-bag"></i><span>${{$totalPrice}}</span></a>
                                 </div>
                             </div>
@@ -492,11 +494,12 @@
                                 alt="Cart product Image"></a>
                         <div class="content">
                             <a href="single-product.html" class="title">{{$cart->name}}</a></a>
-                            <span class="quantity-price">{{$cart->quantity}} x <span class="amount">${{$cart->price}}</span></span>
+                            <span class="quantity-price">{{$cart->quantity}} x <span
+                                    class="amount">${{$cart->price}}</span></span>
                             <a href="{{route('cart-remove',$cart->id)}}" class="remove">×</a>
                         </div>
                     </li>
-                   @endforeach
+                    @endforeach
                 </ul>
             </div>
             <div class="foot">
@@ -506,7 +509,7 @@
                 </div>
                 <div class="buttons">
                     <a href="{{route('cart')}}" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
-                    <a href="{{route('checkout')}}" class="btn btn-outline-dark current-btn">checkout</a>
+                    <a href="{{route('account.logout')}}" class="btn btn-outline-dark current-btn">checkout</a>
                 </div>
                 <p class="minicart-message">Free Shipping on All Orders Over $100!</p>
             </div>
@@ -547,7 +550,7 @@
             <div class="offcanvas-buttons mt-30px">
                 <div class="header-tools d-flex">
                     <div class="cart-info d-flex align-self-center">
-                        <a href="{{route('account')}}" class="user"><i class="icon-user"></i></a>
+                        <a href="{{route('account.profile')}}" class="user"><i class="icon-user"></i></a>
                         <a href="{{route('wishlist')}}" data-number="3"><i class="icon-heart"></i></a>
                         <a href="" data-number="3"><i class="icon-bag"></i></a>
                     </div>
@@ -789,8 +792,8 @@
                                         <li><a href="#">Prices Drop</a></li>
                                         <li><a href="#">New Products</a></li>
                                         <li><a href="#">Best Sales</a></li>
-                                        <li><a href="{{route('login')}}">Login</a></li>
-                                        <li><a href="{{route('account')}}">My Account</a></li>
+                                        <li><a href="{{route('account.login')}}">Login</a></li>
+                                        <li><a href="{{route('account.profile')}}">My Account</a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AccountController;
 
 
 /*
@@ -26,9 +27,6 @@ Route::group(['prefix' => ''], function() {
     Route::get('/about',  [HomeController::class, 'about'])->name('about');
     Route::get('/blog',  [HomeController::class, 'blog'])->name('blog');
     Route::get('/contact',  [HomeController::class, 'contact'])->name('contact');
-    Route::get('/checkout',  [HomeController::class, 'checkout'])->name('checkout');
-    Route::get('/login',  [HomeController::class, 'login'])->name('login');
-    Route::get('/account',  [HomeController::class, 'account'])->name('account');
     Route::get('/wishlist',  [HomeController::class, 'wishlist'])->name('wishlist');
     Route::get('//{product}-{slug}',[HomeController::class, 'single_product'])->name('single_product');
     Route::get('/thank you',  [HomeController::class, 'thankyou'])->name('thankyou');
@@ -54,6 +52,15 @@ Route::group(['prefix' => 'cart'], function() {
     Route::get('/remove/{product}',  [CartController::class, 'remove'])->name('cart-remove');
     Route::get('/clear',  [CartController::class, 'clear'])->name('cart-clear');
     Route::get('/blank',  [CartController::class, 'blank'])->name('cart-blank');
+});
+
+Route::group(['prefix' => 'account'], function() {
+    Route::get('/Sign_in',  [AccountController::class, 'login'])->name('account.login');
+    Route::post('/Sign_in',  [AccountController::class, 'post_login'])->name('account.login');
+    Route::get('/Checkout',  [AccountController::class, 'logout'])->name('account.logout');
+    Route::get('/Register',  [AccountController::class, 'register'])->name('account.register');
+    Route::post('/Register',  [AccountController::class, 'post_register'])->name('account.register');
+    Route::get('/Account',  [AccountController::class, 'profile'])->name('account.profile');
 });
 
 
