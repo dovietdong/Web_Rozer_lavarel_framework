@@ -1,9 +1,12 @@
+
+
 @extends('layout.main')
 
 @section('title', 'Cart')
 
 @section('cart')
 <!-- cart area start -->
+
 <div class="cart-main-area mtb-60px">
     <div class="container">
         <h3 class="cart-page-title">Your cart items</h3>
@@ -82,7 +85,7 @@
                                 </ul>
                             </div>
                             <h4 class="grand-totall-title">Grand Total <span>${{$totalPrice}}</span></h4>
-                            <a href="{{route('checkout')}}">Proceed to Checkout</a>
+                            <a href="">Proceed to Checkout</a>
                         </div>
                     </div>
                 </div>

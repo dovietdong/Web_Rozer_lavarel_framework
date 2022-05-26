@@ -9,9 +9,11 @@ use Illuminate\Support\Arr;
 class CartController extends Controller
 {
     public function view(Product $product){
+        
         //kiểm tra nếu có tồn tại sản phẩm trong giỏ hàng từ trước, thì lưu lại vào $carts
         if(session('cart')){
             $carts = session('cart') ? session('cart'):[];
+            // dd('ok');
             return view('site.cart',compact('carts'));
         }else
             return view('site.cart-blank');

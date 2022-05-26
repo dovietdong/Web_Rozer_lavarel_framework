@@ -54,6 +54,8 @@ Route::group(['prefix' => 'cart'], function() {
     Route::get('/blank',  [CartController::class, 'blank'])->name('cart-blank');
 });
 
+
+
 Route::group(['prefix' => 'account'], function() {
     Route::get('/Sign_in',  [AccountController::class, 'login'])->name('account.login');
     Route::post('/Sign_in',  [AccountController::class, 'post_login'])->name('account.login');
@@ -65,3 +67,6 @@ Route::group(['prefix' => 'account'], function() {
 
 
 
+
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
