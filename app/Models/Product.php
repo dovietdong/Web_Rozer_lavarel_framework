@@ -8,7 +8,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'products';
-    protected $fillable = ['name', 'price','sale_price','image','descriptions','category_id','status'];
+    protected $fillable = ['id','name', 'price','sale_price','image','descriptions','category_id','status'];
     // để lavarel không ghi đè lên trường creat_at trong DB của mình, nếu như ko ghi lệnh này sẽ lỗi và phải sửa lại tên trong DB là created_at
     public $timestamps = false;
 

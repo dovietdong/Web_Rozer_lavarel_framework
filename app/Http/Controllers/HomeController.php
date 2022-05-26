@@ -11,7 +11,10 @@
             return view('site.index', compact('category','product_sale','product_new'));
         }
         public function shop() {
-            return view('site.shop');
+            $category = Category::paginate(10);
+            $product_sale = Product::sale();
+            $product_new = Product::new(20);
+            return view('site.shop', compact('category','product_sale','product_new'));
         }
         public function about() {
             return view('site.about');

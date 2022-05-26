@@ -311,12 +311,17 @@
                                                 <i class="ion-android-star"></i>
                                             </div>
                                             <div class="pricing-meta">
+                                                @if($pn->sale_price != 0)
                                                 <ul>
-                                                    <li class="old-price">€{{number_format($pn->price, 2)}}</li>
-                                                    <li class="current-price">€{{number_format($pn->sale_price, 2)}}
-                                                    </li>
+                                                    <li class="old-price">€{{number_format($pn->price,2)}}</li>
+                                                    <li class="current-price">€{{number_format($pn->sale_price,2)}}</li>
                                                     <li class="discount-price">-10%</li>
                                                 </ul>
+                                                @else
+                                                <ul>
+                                                    <li class="old-price not-cut">€{{number_format($pn->price,2)}}</li>
+                                                </ul>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="add-to-link">
@@ -336,7 +341,7 @@
                                     </article>
                                     <article class="list-product">
                                         <div class="img-block">
-                                            <a href="single-product.html" class="thumbnail">
+                                            <a href="{{route('single_product',['product'=>$pn->id,'slug'=>Str::slug($pn->name)])}}" class="thumbnail">
                                                 <img class="first-img" src="{{ url('uploads') }}/{{$pn->image}}" alt="">
                                                 <img class="second-img" src="{{ url('uploads') }}/{{$pn->image}}"
                                                     alt="">
@@ -353,9 +358,9 @@
                                             <li class="new">New</li>
                                         </ul>
                                         <div class="product-decs">
-                                            <a class="inner-link" href="shop-4-column.html"><span>
+                                            <a class="inner-link" href="{{route('category',$pn->cat->id)}}"><span>
                                                     {{$pn->cat->name}}</span></a>
-                                            <h2><a href="single-product.html" class="product-link">
+                                            <h2><a href="{{route('single_product',['product'=>$pn->id,'slug'=> Str::slug($pn->name)])}}" class="product-link">
                                                     {{$pn->name}}
                                                 </a></h2>
                                             <div class="rating-product">
@@ -381,7 +386,7 @@
                                         </div>
                                         <div class="add-to-link">
                                             <ul>
-                                                <li class="cart"><a title="Add to cart" href="#"><i
+                                                <li class="cart"><a title="Add to cart" href="{{route('cart-add',$pn->id)}}"><i
                                                             class="icon-bag"></i></a></li>
                                                 <li>
                                                     <a title="Add to wishlist" href="wishlist.html"><i
@@ -396,6 +401,8 @@
                                     </article>
                                 </div>
                                 @endforeach
+
+                            
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-buttons">
